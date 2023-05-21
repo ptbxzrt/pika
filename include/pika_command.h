@@ -196,6 +196,9 @@ const std::string kClusterPrefix = "pkcluster";
 using PikaCmdArgsType = net::RedisCmdArgsType;
 static const int RAW_ARGS_LEN = 1024 * 1024;
 
+// Module
+const std::string kCmdNameModule = "module";
+
 enum CmdFlagsMask {
   kCmdFlagsMaskRW = 1,
   kCmdFlagsMaskType = 30,
@@ -219,6 +222,7 @@ enum CmdFlags {
   kCmdFlagsHyperLogLog = 14,
   kCmdFlagsGeo = 16,
   kCmdFlagsPubSub = 18,
+  kCmdFlagsModule = 20,
   kCmdFlagsNoLocal = 0,  // default nolocal
   kCmdFlagsLocal = 32,
   kCmdFlagsNoSuspend = 0,  // default nosuspend

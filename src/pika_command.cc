@@ -20,6 +20,7 @@
 #include "include/pika_server.h"
 #include "include/pika_set.h"
 #include "include/pika_zset.h"
+#include "include/pika_module.h"
 
 using pstd::Status;
 
@@ -463,6 +464,9 @@ void InitCmdTable(CmdTable* cmd_table) {
   ////PubSub
   std::unique_ptr<Cmd> pubsubptr = std::make_unique<PubSubCmd>(kCmdNamePubSub, -2, kCmdFlagsRead | kCmdFlagsPubSub);
   cmd_table->insert(std::pair<std::string, std::unique_ptr<Cmd>>(kCmdNamePubSub, std::move(pubsubptr)));
+  ////Module
+  std::unique_ptr<Cmd> moduleptr = std::make_unique<ModuleCmd>(kCmdNameModule, -2, kCmdFlagsModule);
+  cmd_table->insert(std::pair<std::string, std::unique_ptr<Cmd>>(kCmdNameModule, std::move(moduleptr)));
 }
 
 Cmd* GetCmdFromTable(const std::string& opt, const CmdTable& cmd_table) {
